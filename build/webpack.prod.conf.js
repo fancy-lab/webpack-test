@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CompressionPlugin = require('compression-webpack-plugin');
 const utils = require("./utils");
 const WebpackMerge = require('webpack-merge');
 process.env.NODE_ENV = 'production';
@@ -20,6 +21,7 @@ const config = WebpackMerge(baseConfig, {
         dll: '',
       }
     }),
+    new CompressionPlugin(),
   ],
   optimization: {
     splitChunks: {
