@@ -2,9 +2,9 @@
 
 ### How to run:
 
-. `yarn install`
-. `yarn build:dll`
-. `yarn dev`
+> `yarn install`
+> `yarn build:dll`
+> `yarn dev`
 
 然后在dll目录中, 可以看到vendor.dll的相关文件
 
