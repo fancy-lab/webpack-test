@@ -12,11 +12,11 @@ const config = WebpackMerge(baseConfig, {
   // devtool: "cheap-module-eval-source-map",
   // devtool: "inline-source-map", // 在chrome的source里可以方便查看源码
   devtool: false,
-  mode: 'development',
-  // mode: 'production',
+  // mode: 'development',
+  mode: 'production',
   output: {
     filename: "[name].js",
-    path: utils.resolve("dist")
+    path: utils.resolve("dev_dist")
   },
   plugins: [
     // new BundleAnalyzerPlugin(),
@@ -34,6 +34,7 @@ const config = WebpackMerge(baseConfig, {
       templateParameters: {
         title: 'nextop webpack test',
         hash: true,
+        dll: `<script src="../dll/vendor.dll.js"></script>`, // for development
       }
     }),
     new webpack.DllReferencePlugin({
@@ -53,7 +54,7 @@ const config = WebpackMerge(baseConfig, {
   }
 });
 
-// 用了DllPlugin, 就不需要拆包了
+// 用了DllPlugin, 就不需要拆包了, production可以用
 if (false) {
   config.optimization.splitChunks = {
     chunks: 'all',
