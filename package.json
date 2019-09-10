@@ -1,0 +1,26 @@
+{
+  "name": "webpack-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --config build/webpack.dev.conf.js",
+    "build:dll": "webpack --config build/webpack.dll.conf.js",
+    "dm": "webpack --display-modules --config build/webpack.dev.conf.js"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "babel-loader": "^8.0.6",
+    "babel-plugin-lodash": "^3.3.4",
+    "clean-webpack-plugin": "^3.0.0",
+    "copy-webpack-plugin": "^5.0.4",
+    "eslint-friendly-formatter": "^4.0.1",
+    "html-webpack-plugin": "^3.2.0",
+    "lodash": "^4.17.15",
+    "lodash-es": "^4.17.15",
+    "ts-loader": "^6.0.4",
+    "webpack": "^4.39.3",
+    "webpack-bundle-analyzer": "^3.4.1",
+    "webpack-cli": "^3.3.7",
+    "webpack-merge": "^4.2.2"
+  }
+}
