@@ -1,7 +1,7 @@
 // const CopyWebpackPlugin = require("copy-webpack-plugin");
 const path = require('path');
 const webpack = require('webpack');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const utils = require("./utils");
@@ -12,14 +12,14 @@ const config = WebpackMerge(baseConfig, {
   // devtool: "cheap-module-eval-source-map",
   // devtool: "inline-source-map", // 在chrome的source里可以方便查看源码
   devtool: false,
-  // mode: 'development',
-  mode: 'production',
+  mode: 'development',
+  // mode: 'production',
   output: {
     filename: "[name].js",
     path: utils.resolve("dev_dist")
   },
   plugins: [
-    // new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin(),
     // new TerserPlugin(),
     // new CopyWebpackPlugin([    // 复制静态文件
     //   {
@@ -55,7 +55,7 @@ const config = WebpackMerge(baseConfig, {
 });
 
 // 用了DllPlugin, 就不需要拆包了, production可以用
-if (false) {
+if (true) {
   config.optimization.splitChunks = {
     chunks: 'all',
     // minSize: 30000,
@@ -68,15 +68,16 @@ if (false) {
     // name: true,
     cacheGroups: {
       vendors: {
-        filename: 'vendor.bundle.js',
-        test: /[\\/]node_modules[\\/]/,
+        filename: 'common.bundle.js',
+        test: /\.\/common/,
         priority: -10
       },
       default: {
         minChunks: 2,
         priority: -20,
         reuseExistingChunk: true
-      }
+      },
+      chunks: 'all',
     }
   };
 }
