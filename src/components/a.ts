@@ -1,14 +1,19 @@
 // import { name as bName } from './b';
 console.log('Module A starting...');
 
-import('./b').then(({name: BName}) => {
-  console.log('module B name:', BName);
-});
+import { name as CommonName } from './common';
 
-// import { name as CommonName } from './common';
+// import './b';
+
 import('./common').then(({name: CommonName}) => {
   console.log('common name from A:', CommonName);
+
+  import('./b').then(({name: BName}) => {
+    console.log('module B name:', BName);
+  });
 });
+
+
 
 export const name = 'a';
 

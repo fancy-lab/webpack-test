@@ -29,10 +29,10 @@ const config = {
       //     }
       //   ],
       // },
-      {
-        include: utils.resolve("node_modules", "lodash"),
-        sideEffects: false
-      }
+      // {
+      //   include: utils.resolve("node_modules", "lodash"),
+      //   sideEffects: false
+      // }
     ]
   }
 };

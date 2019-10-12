@@ -2,6 +2,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
+// const ModuleTrackerPlugin = require('webpack-module-tracker');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const utils = require("./utils");
@@ -19,7 +20,8 @@ const config = WebpackMerge(baseConfig, {
     path: utils.resolve("dev_dist")
   },
   plugins: [
-    new BundleAnalyzerPlugin(),
+    new BundleAnalyzerPlugin({analyzerMode: 'static', generateStatsFile: true, statsFilename: 'stats_node_module.json'}),
+    // new ModuleTrackerPlugin(),
     // new TerserPlugin(),
     // new CopyWebpackPlugin([    // 复制静态文件
     //   {
@@ -28,20 +30,22 @@ const config = WebpackMerge(baseConfig, {
     //     toType: "dir"
     //   },
     // ]),
-    new HtmlWebpackPlugin({
-      title: 'nextop webpack test',  // 指定了template, title就无效了
-      template: 'src/index.html',
-      templateParameters: {
-        title: 'nextop webpack test',
-        hash: true,
-        dll: `<script src="../dll/vendor.dll.js"></script>`, // for development
-      }
-    }),
-    new webpack.DllReferencePlugin({
-      context: path.resolve(__dirname, '..'),
-      name: 'vendor_library',
-      manifest: require('../dll/vendor-manifest.json')
-    }),
+
+    // new HtmlWebpackPlugin({
+    //   title: 'nextop webpack test',  // 指定了template, title就无效了
+    //   template: 'src/index.html',
+    //   templateParameters: {
+    //     title: 'nextop webpack test',
+    //     hash: true,
+    //     dll: `<script src="../dll/vendor.dll.js"></script>`, // for development
+    //   }
+    // }),
+
+    // new webpack.DllReferencePlugin({
+    //   context: path.resolve(__dirname, '..'),
+    //   name: 'vendor_library',
+    //   manifest: require('../dll/vendor-manifest.json')
+    // }),
   ],
   optimization: {
     concatenateModules: true,
@@ -55,7 +59,7 @@ const config = WebpackMerge(baseConfig, {
 });
 
 // 用了DllPlugin, 就不需要拆包了, production可以用
-if (true) {
+if (false) {
   config.optimization.splitChunks = {
     chunks: 'all',
     // minSize: 30000,

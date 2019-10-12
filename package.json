@@ -4,6 +4,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --config build/webpack.dev.conf.js",
+    "start": "webpack-dev-server --config build/webpack.dev.conf.js",
+    "dev2": "webpack --config build/webpack.dev.conf.js --profile --json > stat.json",
+    "dev3": "webpack-dev-server --config build/webpack.dev.conf.js --profile --json > stat.json",
     "prod": "webpack --config build/webpack.prod.conf.js",
     "build:dll": "webpack --config build/webpack.dll.conf.js",
     "dm": "webpack --display-modules --config build/webpack.dev.conf.js"
@@ -15,6 +18,7 @@
     "clean-webpack-plugin": "^3.0.0",
     "compression-webpack-plugin": "^3.0.0",
     "copy-webpack-plugin": "^5.0.4",
+    "echarts": "^4.3.0",
     "eslint-friendly-formatter": "^4.0.1",
     "html-webpack-plugin": "^3.2.0",
     "lodash": "^4.17.15",
@@ -23,6 +27,7 @@
     "webpack": "^4.39.3",
     "webpack-bundle-analyzer": "^3.5.0",
     "webpack-cli": "^3.3.7",
+    "webpack-dev-server": "^3.8.1",
     "webpack-merge": "^4.2.2"
   }
 }
