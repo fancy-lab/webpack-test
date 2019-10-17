@@ -2,8 +2,8 @@ const utils = require("./utils");
 
 const config = {
   entry: {
-    app: "./src/main.ts",
-    // index: "./src/index.js",
+    // app: "./src/main.ts",
+    index: "./src/index.js",
   },
   output: {
     filename: `[name].js`,
@@ -33,7 +33,17 @@ const config = {
       //   include: utils.resolve("node_modules", "lodash"),
       //   sideEffects: false
       // }
-    ]
+
+      {
+        'loader': 'babel-loader',
+        'test': /\.js$/,
+        'exclude': /node_modules/,
+        'query': {
+          'plugins': ['lodash'],
+          'presets': [['@babel/env', { 'targets': { 'node': 6 } }]]
+        }
+      }
+    ],
   }
 };
 

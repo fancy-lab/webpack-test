@@ -13,7 +13,9 @@ import('./common').then(({name: CommonName}) => {
   });
 });
 
+import _ from 'lodash';
 
+console.log(_.get({n: 'a'}, 'n'), _.fp);
 
 export const name = 'a';
 

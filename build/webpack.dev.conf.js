@@ -5,6 +5,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 // const ModuleTrackerPlugin = require('webpack-module-tracker');
 const TerserPlugin = require('terser-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
 const utils = require("./utils");
 const WebpackMerge = require('webpack-merge');
 const baseConfig = require('./webpack.base.conf');
@@ -21,6 +22,7 @@ const config = WebpackMerge(baseConfig, {
   },
   plugins: [
     new BundleAnalyzerPlugin({analyzerMode: 'static', generateStatsFile: true, statsFilename: 'stats_node_module.json'}),
+    new LodashModuleReplacementPlugin,
     // new ModuleTrackerPlugin(),
     // new TerserPlugin(),
     // new CopyWebpackPlugin([    // 复制静态文件
