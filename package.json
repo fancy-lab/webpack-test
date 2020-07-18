@@ -23,7 +23,7 @@
     "echarts": "^4.3.0",
     "eslint-friendly-formatter": "^4.0.1",
     "html-webpack-plugin": "^3.2.0",
-    "lodash": "^4.17.15",
+    "lodash": "^4.17.19",
     "lodash-es": "^4.17.15",
     "lodash-webpack-plugin": "^0.11.5",
     "ts-loader": "^6.0.4",
